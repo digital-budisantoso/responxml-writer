@@ -143,7 +143,10 @@ public class IbkWriterSvc {
                         infoRekening.setTglAkhir(formatter.toXMLGregCal(rek[8]));
                         infoRekening.setTglAwal(formatter.toXMLGregCal(rek[9]));
                         infoRekening.setTglBukaRek(formatter.toXMLGregCal(rek[10]));
-
+                        //Apabila status rekening telah ditutup maka isi elemen tgl tutup rekening
+                        if(rek[3].equals("02")){
+                            infoRekening.setTglTutupRek(formatter.toXMLGregCal(rek[12]));
+                        }
                         List<MutasiRekeningType> lsMutasiRek = new ArrayList<MutasiRekeningType>();
 
                         //mengambil data mutasi dari sumber data dengan parameter nomor rekening
